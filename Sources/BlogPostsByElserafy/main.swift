@@ -29,6 +29,37 @@ private struct Wrapper: ComponentContainer {
     }
 }
 
+private struct SiteHeader<Site: Website>: Component {
+    var context: PublishingContext<Site>
+    var selectedSelectionID: Site.SectionID?
+
+    var body: Component {
+        Header {
+            Wrapper {
+                Link(context.site.name, url: "/")
+                    .class("site-name")
+
+                if Site.SectionID.allCases.count > 1 {
+                    navigation
+                }
+            }
+        }
+    }
+
+    private var navigation: Component {
+        Navigation {
+            List(Site.SectionID.allCases) { sectionID in
+                let section = context.sections[sectionID]
+
+                return Link(section.title,
+                    url: section.path.absoluteString
+                )
+                .class(sectionID == selectedSelectionID ? "selected" : "")
+            }
+        }
+    }
+}
+
 private struct ItemList<Site: Website>: Component {
     var items: [Item<Site>]
     var site: Site
@@ -48,15 +79,24 @@ private struct ItemList<Site: Website>: Component {
 struct MyHTMLFactory<Site: Website>: HTMLFactory {
     
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
-        HTML("hello world!")
+        HTML(
+            .head(for: index, on: context.site),
+                .body {
+                    SiteHeader(context: context, selectedSelectionID: nil)
+                } // body
+        ) // html
     }
     
     func makeSectionHTML(for section: Section<Site>, context: PublishingContext<Site>) throws -> HTML {
-        HTML("")
+        HTML(
+            .head(for: section, on: context.site)
+        ) // html
     }
     
     func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
-        HTML("")
+        HTML(
+            .head(for: item, on: context.site)
+        ) // html
     }
     
     func makePageHTML(for page: Page, context: PublishingContext<Site>) throws -> HTML {
