@@ -116,6 +116,8 @@ struct MyHTMLFactory<Site: Website>: HTMLFactory {
                 Wrapper {
                     Article {
                         Div(item.content.body).class("content")
+                        Span("Tags: ")
+                        ItemTagList(item: item, site: context.site)
                     } // article
                 } // wrapper
             } // body
