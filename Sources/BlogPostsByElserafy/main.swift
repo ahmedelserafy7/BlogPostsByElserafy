@@ -76,6 +76,18 @@ private struct ItemList<Site: Website>: Component {
     }
 }
 
+private struct ItemTagList<Site: Website>: Component {
+    var item: Item<Site>
+    var site: Site
+
+    var body: Component {
+        List(item.tags) { tag in
+            Link(tag.string, url: site.path(for: tag).absoluteString)
+        }
+        .class("tag-list")
+    }
+}
+
 struct MyHTMLFactory<Site: Website>: HTMLFactory {
     
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
@@ -85,7 +97,7 @@ struct MyHTMLFactory<Site: Website>: HTMLFactory {
                     SiteHeader(context: context, selectedSelectionID: nil)
                     Wrapper {
                         ItemList(items: context.allItems(sortedBy: \.date, order: .descending), site: context.site)
-                    }
+                    } // wrapper
                 } // body
         ) // html
     }
@@ -98,7 +110,15 @@ struct MyHTMLFactory<Site: Website>: HTMLFactory {
     
     func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
         HTML(
-            .head(for: item, on: context.site)
+            .head(for: item, on: context.site),
+            .body {
+                SiteHeader(context: context, selectedSelectionID: nil)
+                Wrapper {
+                    Article {
+                        Div(item.content.body).class("content")
+                    } // article
+                } // wrapper
+            } // body
         ) // html
     }
     
