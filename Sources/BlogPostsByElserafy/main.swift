@@ -83,6 +83,9 @@ struct MyHTMLFactory<Site: Website>: HTMLFactory {
             .head(for: index, on: context.site),
                 .body {
                     SiteHeader(context: context, selectedSelectionID: nil)
+                    Wrapper {
+                        ItemList(items: context.allItems(sortedBy: \.date, order: .descending), site: context.site)
+                    }
                 } // body
         ) // html
     }
