@@ -8,6 +8,6 @@
 <img src="https://i.imgur.com/Oj6SNLJ.gif" alt="blogpostsbyelserafy">
 </a>
 
-Welcome to **BlogPostsByElserafy**, a website on localhost created by Swift using John Sundell's [Publish](https://github.com/JohnSundell/Publish).
+Welcome to **BlogPostsByElserafy**, a blogging site on localhost created by Swift using John Sundell's [Publish](https://github.com/JohnSundell/Publish).
 
 Check out the article on my [Blogging Site](https://ahmedelserafy7.github.io/posts/2021/09/counting-minutes).
