@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-<img src="https://i.imgur.com/Oj6SNLJ.gif" alt="blogpostsbyelserafy">
+<img src="https://i.imgur.com/ek2hQgM.gif" alt="blogpostsbyelserafy">
 </a>
 
 Welcome to **BlogPostsByElserafy**, a blogging site on localhost created by Swift using John Sundell's [Publish](https://github.com/JohnSundell/Publish).
