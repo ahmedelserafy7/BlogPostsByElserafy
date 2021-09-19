@@ -15,7 +15,7 @@ To solve this problem, you need to divide the problem into two parts:
 
 <h2>Let's dive into the first part</h2>
 
-First things first, we'll create `convertHoursToMinutes(str:)` function to get number of minutes out of hours.
+First things first, we'll create `convertHoursToMinutes(str:)` function to return the number of hours in minutes.
 
 ```swift
 
@@ -99,21 +99,21 @@ func countingMinutes(str: String) {
 <hr><br>
 <b>Input</b>: 10:00am-9:00pm.
 <br><br>
-<b>Explaination</b>: 10am gives you 600 minutes, and 9:00pm gives you 1260. So the second time has more minutes than the first one, so we'll return 1260 - 600 = 660.
+<b>Explanation</b>: 10am gives you 600 minutes, and 9:00pm gives you 1260. So the second time has more minutes than the first one, so we'll return 1260 - 600 = 660.
 <br><br>
 <b>Output</b>: 660
 
 <hr><br>
 <b>Input</b>: 10:00pm-9:00pm. 
 <br><br>
-<b>Explaination</b>: 10:00pm gives you 1320 minutes, and 9:00pm gives you 1260. So the first time has more minutes than the second one, so we'll return (1440 - 1320) + 1260) = 120 + 1260 = 1380.
+<b>Explanation</b>: 10:00pm gives you 1320 minutes, and 9:00pm gives you 1260. So the first time has more minutes than the second one, so we'll return (1440 - 1320) + 1260) = 120 + 1260 = 1380.
 <br><br>
 <b>Output</b>: 1380
 
 <hr><br>
 <b>Input</b>: 10:30pm-9:00am. 
 <br><br>
-<b>Explaination</b>: 10:30pm gives you 1350 minutes, and 9:00am gives you 540. So the first time has more minutes than the second one, so we'll return (1440 - 1350) + 540) = 90 + 540 = 630.
+<b>Explanation</b>: 10:30pm gives you 1350 minutes, and 9:00am gives you 540. So the first time has more minutes than the second one, so we'll return (1440 - 1350) + 540) = 90 + 540 = 630.
 <br><br>
 <b>Output</b>: 630
 <hr>
